@@ -7,22 +7,11 @@ updates:
     labels:
       - "npm"
       - "dependencies"
-    match:
-      - dependency-name: "react"
-      - dependency-name: "react-dom"
-      - dependency-name: "react-test-renderer"
-    update-strategy: "batch"
-  - package-ecosystem: "npm"
-    directory: "/app-frontend"
-    schedule:
-      interval: "daily"
-    labels:
-      - "npm"
-      - "dependencies"
-    match:
-      - dependency-name: "*"
-        exclude:
-          - dependency-name: "react"
-          - dependency-name: "react-dom"
-          - dependency-name: "react-test-renderer"
-    update-strategy: "auto"
+    groups:
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "react-test-renderer"
+    ignore:
+    open-pull-requests-limit: 10
