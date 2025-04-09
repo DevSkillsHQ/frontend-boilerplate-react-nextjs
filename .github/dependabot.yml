@@ -1,16 +1,50 @@
 version: 2
 updates:
+  # Group React and Testing Library packages together
   - package-ecosystem: "npm"
     directory: "/app-frontend"
     schedule:
       interval: "daily"
-    labels:
-      - "npm"
-      - "dependencies"
     groups:
-      react:
+      react-ecosystem:
         patterns:
           - "react"
           - "react-dom"
-    ignore:
+          - "@testing-library/*"
+    labels:
+      - "dependencies"
+      - "react-ecosystem"
     open-pull-requests-limit: 10
+
+  # Next.js and build tools as another group
+  - package-ecosystem: "npm"
+    directory: "/app-frontend"
+    schedule:
+      interval: "daily"
+    groups:
+      build-tools:
+        patterns:
+          - "next"
+          - "tailwindcss"
+          - "postcss"
+          - "@tailwindcss/*"
+    labels:
+      - "dependencies"
+      - "build-tools"
+    open-pull-requests-limit: 5
+
+  # Testing tools as another group
+  - package-ecosystem: "npm"
+    directory: "/app-frontend"
+    schedule:
+      interval: "daily"
+    groups:
+      testing-tools:
+        patterns:
+          - "jest*"
+          - "babel-jest"
+          - "identity-obj-proxy"
+    labels:
+      - "dependencies"
+      - "testing"
+    open-pull-requests-limit: 5
