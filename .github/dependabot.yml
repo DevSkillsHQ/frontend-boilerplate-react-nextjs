@@ -4,25 +4,30 @@ updates:
     directory: "/app-frontend"
     schedule:
       interval: "daily"
+    groups:
+      # React and related libraries
+      react-ecosystem:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@testing-library/*"
+      
+      # Next.js and build tools
+      build-tools:
+        patterns:
+          - "next"
+          - "tailwindcss"
+          - "postcss"
+          - "@tailwindcss/*"
+      
+      # Testing tools
+      testing-tools:
+        patterns:
+          - "jest*"
+          - "babel-jest"
+          - "identity-obj-proxy"
+    
+    # Common settings for all groups
+    open-pull-requests-limit: 10
     labels:
-      - "npm"
       - "dependencies"
-    match:
-      - dependency-name: "react"
-      - dependency-name: "react-dom"
-      - dependency-name: "react-test-renderer"
-    update-strategy: "batch"
-  - package-ecosystem: "npm"
-    directory: "/app-frontend"
-    schedule:
-      interval: "daily"
-    labels:
-      - "npm"
-      - "dependencies"
-    match:
-      - dependency-name: "*"
-        exclude:
-          - dependency-name: "react"
-          - dependency-name: "react-dom"
-          - dependency-name: "react-test-renderer"
-    update-strategy: "auto"
