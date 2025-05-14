@@ -4,30 +4,37 @@ updates:
     directory: "/app-frontend"
     schedule:
       interval: "daily"
+    labels:
+      - "dependencies"
+    versioning-strategy: auto
+
     groups:
-      # React and related libraries
       react-ecosystem:
         patterns:
           - "react"
           - "react-dom"
+          - "react-*"
           - "@testing-library/*"
-      
-      # Next.js and build tools
+        update-types:
+          - "minor"
+          - "patch"
+
       build-tools:
         patterns:
           - "next"
           - "tailwindcss"
           - "postcss"
           - "@tailwindcss/*"
-      
-      # Testing tools
+        update-types:
+          - "minor"
+          - "patch"
+
       testing-tools:
         patterns:
-          - "jest*"
+          - "jest"
+          - "jest-*"
           - "babel-jest"
           - "identity-obj-proxy"
-    
-    # Common settings for all groups
-    open-pull-requests-limit: 10
-    labels:
-      - "dependencies"
+        update-types:
+          - "minor"
+          - "patch"
