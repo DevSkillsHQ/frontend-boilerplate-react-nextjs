@@ -3,38 +3,24 @@ updates:
   - package-ecosystem: "npm"
     directory: "/app-frontend"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    versioning-strategy: auto
     labels:
       - "dependencies"
-    versioning-strategy: auto
-
     groups:
-      react-ecosystem:
-        patterns:
-          - "react"
-          - "react-dom"
-          - "react-*"
-          - "@testing-library/*"
-        update-types:
-          - "minor"
-          - "patch"
-
-      build-tools:
+      next:
         patterns:
           - "next"
-          - "tailwindcss"
-          - "postcss"
-          - "@tailwindcss/*"
+          - "eslint-config-next"
+          - "@next/*"
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
         update-types:
-          - "minor"
-          - "patch"
-
-      testing-tools:
-        patterns:
-          - "jest"
-          - "jest-*"
-          - "babel-jest"
-          - "identity-obj-proxy"
+          - "major"
+      minor-and-patch:
         update-types:
           - "minor"
           - "patch"
